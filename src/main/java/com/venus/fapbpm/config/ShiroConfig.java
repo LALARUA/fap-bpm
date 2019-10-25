@@ -139,7 +139,7 @@ public class ShiroConfig {
         filterChainDefinitionManager.put("/loginValidate","anon");
         filterChainDefinitionManager.put("/admin/**","roles[admin]");
         filterChainDefinitionManager.put("/logout", "logout");
-        filterChainDefinitionManager.put("/**","authc");
+//        filterChainDefinitionManager.put("/**","authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionManager);
         return shiroFilterFactoryBean;
     }

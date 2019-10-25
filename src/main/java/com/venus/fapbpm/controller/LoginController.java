@@ -21,9 +21,6 @@ public class LoginController {
 
     @PostMapping("/loginValidate")
     public ResponseEntity login(@Valid User user, BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
-            return ResponseUtil.argumentErrorResponse(bindingResult);
-        }
         try {
             userService.loginValidate(user);
         } catch (UnknownAccountException e) {

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.venus.fapbpm.mapper.AlterPolicyApplyMapper">
+  <resultMap id="BaseResultMap" type="com.venus.fapbpm.entity.AlterPolicyApply">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="firewall_id" jdbcType="INTEGER" property="firewallId" />
+    <result column="firewall_name" jdbcType="VARCHAR" property="firewallName" />
+    <result column="policy_set_id" jdbcType="INTEGER" property="policySetId" />
+    <result column="policy_set_name" jdbcType="VARCHAR" property="policySetName" />
+    <result column="policy_id" jdbcType="INTEGER" property="policyId" />
+    <result column="policy_name" jdbcType="VARCHAR" property="policyName" />
+    <result column="src_zone_name" jdbcType="VARCHAR" property="srcZoneName" />
+    <result column="dst_zone_name" jdbcType="VARCHAR" property="dstZoneName" />
+    <result column="src_address_name" jdbcType="VARCHAR" property="srcAddressName" />
+    <result column="dst_address_name" jdbcType="VARCHAR" property="dstAddressName" />
+    <result column="time_name" jdbcType="VARCHAR" property="timeName" />
+    <result column="service_name" jdbcType="VARCHAR" property="serviceName" />
+    <result column="action" jdbcType="VARCHAR" property="action" />
+    <result column="enable_log" jdbcType="INTEGER" property="enableLog" />
+    <result column="enable_baseline" jdbcType="INTEGER" property="enableBaseline" />
+    <result column="move" jdbcType="VARCHAR" property="move" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="priority" jdbcType="INTEGER" property="priority" />
+    <result column="start_time" jdbcType="VARCHAR" property="startTime" />
+    <result column="end_time" jdbcType="VARCHAR" property="endTime" />
+    <result column="detail" jdbcType="VARCHAR" property="detail" />
+  </resultMap>
+</mapper>
