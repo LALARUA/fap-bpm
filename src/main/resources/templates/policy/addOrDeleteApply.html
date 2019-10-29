@@ -7,7 +7,7 @@
 		<ol class="breadcrumb pull-left">
 			<li><a href="index">首页</a></li>
 			<li><a href="#">功能表</a></li>
-			<li><a href="#">防火墙变更审批</a></li>
+			<li><a href="#">策略变更审批</a></li>
 		</ol>
 	</div>
 </div>
@@ -28,40 +28,110 @@
 					<div class="no-move"></div>
 				</div>
 				<div class="box-content">
-					<form role="form" action="startleave" method="post" >
+					<form role="form" action="/policyBpm/startPolicyApply" method="post" >
 						<div class="form-group">
-							<label>审批类型</label>
+							<label class="col-sm-2">审批类型</label>
 							<select id="type" name="type" class="form-control">
-								<option value="新增">新增</option>
-								<option value="删除">删除</option>
+								<option value="0">新增</option>
+								<option value="1">删除</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<select id="diFirewall" name="diFirewall" class="form-control">
-								<option value="1">防火墙1</option>
-								<option value="2">防火墙2</option>
+							<label class="col-sm-2">防火墙</label>
+							<select id="firewall" name="firewall" class="form-control">
+								<option value="98">防火墙1</option>
+								<option value="98">防火墙2</option>
 							</select>
 						</div>
 						<div class="form-group">
+							<label class="col-sm-2">策略集</label>
 							<select id="policySet" name="policySet" class="form-control">
-								<option value="1">策略集1</option>
-								<option value="2">策略集2</option>
+								<option value="5">策略集1</option>
+								<option value="8">策略集2</option>
 							</select>
 						</div>
 						<div class="form-group">
+							<label class="col-sm-2">策略</label>
 							<select id="policy" name="policy" class="form-control">
 								<option value="1">策略1</option>
 								<option value="2">策略2</option>
 							</select>
 						</div>
-
-						<div class="form-group has-feedback">
-							<label>结束时间</label> <input id="end" class="form-control" name="end_time"
-								placeholder="结束时间"/><span class="fa fa-calendar txt-danger form-control-feedback"></span>
+						<div class="form-inline">
+							<div class="form-group" style="width:45%">
+								<label class="col-sm-6">源域</label>
+								<select style="width: 80%" id="srcZone" name="srcZone" class="form-control">
+									<option value="域1">域1</option>
+									<option value="域2">域2</option>
+								</select>
+							</div>
+							<div class="form-group" style="width:45%">
+								<label class="col-sm-6">目的域</label>
+								<select style="width: 80%" id="dstZone" name="dstZone" class="form-control">
+									<option value="域1">域1</option>
+									<option value="域2">域2</option>
+								</select>
+							</div>
 						</div>
+						<div class="form-inline">
+							<div class="form-group" style="width:45%">
+								<label class="col-sm-6">源地址</label>
+								<select style="width: 80%" id="srcAddress" name="srcAddress" class="form-control">
+									<option value="1">地址1</option>
+									<option value="12">地址2</option>
+								</select>
+							</div>
+							<div class="form-group" style="width:45%">
+								<label class="col-sm-6">目的地址</label>
+								<select style="width:80%" id="dstAddress" name="dstAddress" class="form-control">
+									<option value="地址3">地址3</option>
+									<option value="地址4">地址4</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-inline">
+							<div class="form-group" style="width:45%">
+								<label class="col-sm-6">服务</label>
+								<select style="width:80%" id="service" name="service" class="form-control">
+									<option value="服务1">服务1</option>
+									<option value="服务2">服务2</option>
+								</select>
+							</div>
+							<div class="form-group" style="width:45%">
+								<label class="col-sm-6">时间</label>
+								<select style="width:80%" id="time" name="time" class="form-control">
+									<option value="时间1">时间1</option>
+									<option value="时间2">时间2</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-inline">
+							<div class="form-group" style="width: 30%">
+								<label class="col-sm-6">动作</label>
+								<select style="width:80%" id="action" name="action" class="form-control">
+									<option value="permit">permit</option>
+									<option value="deny">deny</option>
+								</select>
+							</div>
+							<div class="form-group" style="width: 30%">
+								<label class="col-sm-6">日志启用</label>
+								<select style="width:80%" id="enableLog" name="enableLog" class="form-control">
+									<option value="1">启用</option>
+									<option value="0">未启用</option>
+								</select>
+							</div>
+							<div class="form-group" style="width: 30%">
+								<label class="col-sm-6">基线</label>
+								<select style="width:80%" id="enableBaseline" name="enableLog" class="form-control">
+									<option value="1">是</option>
+									<option value="0">否</option>
+								</select>
+							</div>
+						</div>
+
 						<div class="form-group">
-							<label>请假原因</label>
-							<textarea class="form-control" name="reason" rows="3"></textarea>
+							<label class="col-sm-6">备注</label>
+							<textarea class="form-control" id="remarks" name="remarks" rows="3"></textarea>
 						</div>
 						<button id="btn" type="button" class="btn btn-primary">开始申请</button>
 						<button type="reset" class="btn btn-primary">重置</button>
@@ -74,10 +144,68 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#btn").click(function(){
-		$.post("startleave",$("form").serialize(),function(){
-			alert("申请成功");
-			LoadAjaxContent("leaveapply");
-		});
+		var type = $("#type").val();
+		var firewallId = $("#firewall").val();
+		var firewallName = $("#firewall").find("option:selected").text();
+		var policySetId = $("#policySet").val();
+		var policySetName = $("#policySet").find("option:selected").text();
+		var policyId = $("#policy").val();
+		var policyName = $("#policy").val();
+		var srcZoneName = $("#srcZone").val();
+		var dstZoneName = $("#dstZone").val();
+		var srcAddressName = $("#srcAddress").val();
+		var srcAddressContent = $("#srcAddress").find("option:selected").text();
+		var dstAddressName = $("#dstAddress").val();
+		var dstAddressContent = $("#dstAddress").find("option:selected").text();
+		var timeName = $("#time").val();
+		var timeContent = $("#time").find("option:selected").text();
+		var serviceName = $("#service").val();
+		var serviceContent = $("#service").find("option:selected").text();
+		var action = $("#action").val();
+		var enableLog = $("#enableLog").val();
+		var enableBaseline = $("#enableBaseline").val();
+		var remarks = $("#remarks").val();
+		$.ajax({
+			url: '/policyBpm/startPolicyApply',
+			type: 'POST', //
+			async: true,    //或false,是否异步
+			timeout: 5000,    //超时时间
+			dataType: 'json',    //返回的数据格式：json/xml/html/script/jsonp/text
+			data: {
+				type:type,
+				firewallId:firewallId,
+				firewallName:firewallName,
+				policySetId:policySetId,
+				policySetName:policySetName,
+				policyId:policyId,
+				policyName:policyName,
+				srcZoneName:srcZoneName,
+				dstZoneName:dstZoneName,
+				srcAddressName:srcAddressName,
+				srcAddressContent:srcAddressContent,
+				dstAddressName:dstAddressName,
+				dstAddressContent:dstAddressContent,
+				timeName:timeName,
+				timeContent:timeContent,
+				serviceName:serviceName,
+				serviceContent:serviceContent,
+				action:action,
+				enableLog:enableLog,
+				enableBaseline:enableBaseline,
+				remarks:remarks
+			},
+			success: function (data) {
+				if (data.head.code != 200){
+					var errorMEssage = data.head.message;
+					if (data.body != null){
+						errorMEssage = errorMEssage + ":" + data.body
+					}
+					alert(errorMEssage)
+					return null;
+				}
+				alert(data.head.message)
+			}
+		})
 	});
 	
 	$('#start').datepicker({setDate: new Date(), dateFormat: 'yy-mm-dd'});

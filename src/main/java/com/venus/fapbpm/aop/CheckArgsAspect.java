@@ -15,6 +15,9 @@ import org.springframework.validation.BindingResult;
 @Component
 public class CheckArgsAspect {
 
+    /**
+     * 检查请求参数合法性切点
+     */
     @Pointcut("execution(* com.venus.fapbpm.controller.*.*(..,org.springframework.validation.BindingResult,..))")
     public void checkController(){}
 

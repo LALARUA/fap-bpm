@@ -152,7 +152,6 @@ public class ShiroConfig {
         credentialsMatcher.setHashAlgorithmName("MD5");
         credentialsMatcher.setHashIterations(1);
         return credentialsMatcher;
-
     }
 
     //ShiroRealm，这是个自定义的认证类，继承自AuthorizingRealm，

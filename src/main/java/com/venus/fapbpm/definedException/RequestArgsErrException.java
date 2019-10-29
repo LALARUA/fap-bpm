@@ -1,6 +1,9 @@
 package com.venus.fapbpm.definedException;
 
-public class RequestArgsErrException extends Exception {
+/**
+ * 请求参数异常
+ */
+public class RequestArgsErrException extends RuntimeException {
     public RequestArgsErrException(String message) {
         super(message);
     }

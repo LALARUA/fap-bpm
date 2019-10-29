@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.venus.fapbpm.mapper.AlterPolicyApplyMapper">
-  <resultMap id="BaseResultMap" type="com.venus.fapbpm.entity.AlterPolicyApply">
+<mapper namespace="com.venus.fapbpm.mapper.PolicyApplyMapper">
+  <resultMap id="BaseResultMap" type="com.venus.fapbpm.entity.PolicyApply">
     <!--
       WARNING - @mbg.generated
     -->
@@ -18,13 +18,17 @@
     <result column="dst_zone_name" jdbcType="VARCHAR" property="dstZoneName" />
     <result column="src_address_name" jdbcType="VARCHAR" property="srcAddressName" />
     <result column="dst_address_name" jdbcType="VARCHAR" property="dstAddressName" />
+    <result column="src_address_content" jdbcType="VARCHAR" property="srcAddressContent" />
+    <result column="dst_address_content" jdbcType="VARCHAR" property="dstAddressContent" />
     <result column="time_name" jdbcType="VARCHAR" property="timeName" />
+    <result column="time_content" jdbcType="VARCHAR" property="timeContent" />
     <result column="service_name" jdbcType="VARCHAR" property="serviceName" />
+    <result column="service_content" jdbcType="VARCHAR" property="serviceContent" />
     <result column="action" jdbcType="VARCHAR" property="action" />
     <result column="enable_log" jdbcType="INTEGER" property="enableLog" />
     <result column="enable_baseline" jdbcType="INTEGER" property="enableBaseline" />
     <result column="move" jdbcType="VARCHAR" property="move" />
-    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
     <result column="priority" jdbcType="INTEGER" property="priority" />
     <result column="start_time" jdbcType="VARCHAR" property="startTime" />
     <result column="end_time" jdbcType="VARCHAR" property="endTime" />
